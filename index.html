@@ -616,7 +616,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
   right:auto !important;
 }
 
-/* Keep the tabs as slim vertical side buttons — not horizontal bars */
+/* Keep the tabs ultra-slim vertical side buttons */
 .contacts-tab,
 .icom-tab{
   position:fixed !important;
@@ -627,20 +627,21 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
   justify-content:center !important;
   writing-mode:vertical-rl !important;
   transform:none !important;
-  font-size:11px !important;
-  letter-spacing:.4px !important;
-  border-radius:0 10px 10px 0 !important;
+  font-size:9px !important;
+  letter-spacing:.25px !important;
+  border-radius:0 7px 7px 0 !important;
   z-index:100001 !important;
+  overflow:hidden !important;
 }
 .contacts-tab{
   top:135px !important;
-  width:34px !important;
-  height:112px !important;
+  width:25px !important;
+  height:94px !important;
 }
 .icom-tab{
-  top:260px !important;
-  width:34px !important;
-  height:100px !important;
+  top:240px !important;
+  width:25px !important;
+  height:84px !important;
 }
 
 /* Attach the tab neatly to the drawer edge when open */
@@ -666,14 +667,14 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
   .contacts-tab{
     left:0 !important;
     top:105px !important;
-    width:32px !important;
-    height:112px !important;
+    width:23px !important;
+    height:88px !important;
   }
   .icom-tab{
     left:0 !important;
-    top:225px !important;
-    width:32px !important;
-    height:100px !important;
+    top:205px !important;
+    width:23px !important;
+    height:80px !important;
   }
   .contacts-panel.open + .contacts-tab{
     left:82vw !important;
@@ -688,14 +689,14 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
 <style id="translucent-contact-icom-tabs">
 /* ===== CONTACTS + ICOM TABS: 20% TRANSLUCENT ===== */
 .contacts-tab{
-  background:rgba(24,36,45,0.20) !important;
+  background:rgba(24,36,45,0.10) !important;
   color:#fff !important;
   border:1px solid rgba(255,255,255,0.28) !important;
   backdrop-filter:blur(6px) !important;
   -webkit-backdrop-filter:blur(6px) !important;
 }
 .icom-tab{
-  background:rgba(8,127,61,0.20) !important;
+  background:rgba(8,127,61,0.10) !important;
   color:#fff !important;
   border:1px solid rgba(255,255,255,0.28) !important;
   backdrop-filter:blur(6px) !important;
@@ -703,87 +704,117 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
 }
 </style>
 <style id="jafurah-5day-weather-final">
-/* ===== JAFURAH 5-DAY WEATHER FORECAST ===== */
+/* ===== JAFURAH 5-DAY WEATHER — FLEXIBLE GLASS CARDS ===== */
 .weather-below-header{padding:10px 10px 5px !important;}
-.weather-below-inner{width:100%;max-width:1100px;}
+.weather-below-inner{width:100%;max-width:1100px;min-width:0;}
 .jafurah-weather-title{
-  text-align:center;
-  font-size:15px;
-  font-weight:900;
-  letter-spacing:1px;
-  color:#173746;
-  margin:0 0 7px;
-  text-transform:uppercase;
+  text-align:center;font-size:clamp(11px,1.15vw,15px);font-weight:900;
+  letter-spacing:clamp(.5px,.12vw,1px);color:#173746;margin:0 0 7px;text-transform:uppercase;
 }
 .weather-strip{
-  width:min(100%,1080px) !important;
-  display:grid !important;
-  grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:7px !important;
-  overflow:visible !important;
-  padding:0 !important;
+  width:100% !important;max-width:none !important;
+  display:grid !important;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:clamp(4px,.65vw,8px) !important;overflow:visible !important;padding:0 !important;
 }
 .weather-item{
-  min-width:0 !important;
-  width:auto !important;
-  min-height:145px !important;
-  padding:0 5px 7px !important;
-  border:0 !important;
-  border-radius:2px !important;
-  background:rgba(255,255,255,.88) !important;
-  box-shadow:0 2px 8px rgba(0,0,0,.16) !important;
-  overflow:hidden;
-  text-align:center;
+  min-width:0 !important;width:100% !important;min-height:clamp(108px,9vw,145px) !important;
+  padding:0 clamp(3px,.55vw,7px) clamp(5px,.55vw,7px) !important;
+  border:1px solid rgba(255,255,255,.25) !important;border-radius:8px !important;
+  background:rgba(255,255,255,.05) !important;
+  box-shadow:0 2px 8px rgba(0,0,0,.12) !important;
+  backdrop-filter:blur(5px) !important;-webkit-backdrop-filter:blur(5px) !important;
+  overflow:hidden;text-align:center;
 }
 .weather-item:before{display:none !important;}
 .weather-day{
-  height:22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 -5px 9px;
-  background:#08a9df;
-  color:#fff;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:.3px;
+  height:clamp(20px,2vw,25px);display:flex;align-items:center;justify-content:center;
+  margin:0 clamp(-7px,-.55vw,-3px) clamp(4px,.7vw,9px);
+  background:rgba(8,169,223,.70);color:#fff;font-size:clamp(7px,.72vw,10px);
+  font-weight:900;letter-spacing:.2px;white-space:nowrap;
 }
 .weather-icon{
-  height:67px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:43px !important;
-  line-height:1;
-  margin:0;
+  height:clamp(42px,4.7vw,67px);display:flex;align-items:center;justify-content:center;
+  font-size:clamp(28px,3.1vw,43px) !important;line-height:1;margin:0;
+  position:relative;transform-origin:center center;will-change:transform,filter;
 }
-.weather-temp{
-  font-size:25px !important;
-  font-weight:900 !important;
-  line-height:1.1;
-  color:#343434 !important;
-  margin-top:4px;
+.weather-icon svg{width:100%;height:100%;max-width:72px;overflow:visible;display:block;}
+.weather-temp{font-size:clamp(17px,1.8vw,25px) !important;font-weight:900 !important;line-height:1.1;color:#343434 !important;margin-top:4px;}
+.weather-date{margin-top:3px;font-size:clamp(7px,.65vw,9px);color:#606060;font-weight:500;white-space:nowrap;}
+.weather-metrics{
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;justify-content:center;
+  gap:2px clamp(3px,.55vw,8px);margin-top:6px;padding-top:5px;
+  border-top:1px solid rgba(24,36,45,.12);font-size:clamp(6px,.62vw,8px);
+  font-weight:800;color:#4f6068;white-space:nowrap;
 }
-.weather-date{
-  margin-top:3px;
-  font-size:9px;
-  color:#606060;
-  font-weight:500;
-}
+.weather-metric{display:inline-flex;align-items:center;justify-content:center;gap:2px;min-width:0;overflow:hidden;text-overflow:ellipsis;}
 .weather-status{margin-top:5px !important;font-size:8px;}
+
+/* Realistic animated weather illustrations */
+.weather-icon.weather-sunny{animation:hseWeatherSun 2.8s ease-in-out infinite;}
+.weather-icon.weather-partly{animation:hseWeatherPartly 3.2s ease-in-out infinite;}
+.weather-icon.weather-cloudy{animation:hseWeatherCloud 3.6s ease-in-out infinite;}
+.weather-icon.weather-rain{animation:hseWeatherRain 1.35s ease-in-out infinite;}
+.weather-icon.weather-storm{animation:hseWeatherStorm 1.7s ease-in-out infinite;}
+.weather-icon.weather-snow{animation:hseWeatherSnow 2.4s ease-in-out infinite;}
+.weather-icon.weather-fog{animation:hseWeatherFog 2.8s ease-in-out infinite;}
+.weather-icon .wx-sun{transform-origin:50% 50%;animation:hseSunRotate 14s linear infinite;}
+.weather-icon .wx-cloud{transform-origin:center;}
+.weather-icon .wx-rain{animation:hseRainDrop .85s linear infinite;}
+.weather-icon .wx-rain.r2{animation-delay:-.28s}.weather-icon .wx-rain.r3{animation-delay:-.56s}
+.weather-icon .wx-flash{animation:hseLightning 2.2s ease-in-out infinite;}
+@keyframes hseWeatherSun{0%,100%{transform:scale(1) rotate(-2deg);filter:drop-shadow(0 0 3px rgba(255,193,7,.18));}50%{transform:scale(1.08) rotate(2deg);filter:drop-shadow(0 0 9px rgba(255,193,7,.45));}}
+@keyframes hseWeatherPartly{0%,100%{transform:translateX(0) scale(1);}50%{transform:translateX(2px) scale(1.04);}}
+@keyframes hseWeatherCloud{0%,100%{transform:translateX(-2px);}50%{transform:translateX(3px);}}
+@keyframes hseWeatherRain{0%,100%{transform:translateY(0) scale(1);}35%{transform:translateY(2px) scale(1.03);}65%{transform:translateY(-1px) scale(.99);}}
+@keyframes hseWeatherStorm{0%,72%,100%{transform:scale(1);filter:brightness(1);}78%{transform:scale(1.07);filter:brightness(1.35) drop-shadow(0 0 7px rgba(255,214,60,.55));}83%{transform:scale(.99);filter:brightness(1);}}
+@keyframes hseWeatherSnow{0%,100%{transform:translateY(-2px) rotate(-2deg);}50%{transform:translateY(3px) rotate(2deg);}}
+@keyframes hseWeatherFog{0%,100%{transform:translateX(-2px);opacity:.78;}50%{transform:translateX(3px);opacity:1;}}
+@keyframes hseSunRotate{to{transform:rotate(360deg);}}
+@keyframes hseRainDrop{0%{opacity:0;transform:translateY(-2px);}20%{opacity:1;}100%{opacity:0;transform:translateY(8px);}}
+@keyframes hseLightning{0%,75%,100%{opacity:.15;}78%{opacity:1;}82%{opacity:.15;}85%{opacity:.95;}88%{opacity:.15;}}
 @media(max-width:650px){
-  .weather-below-header{padding:8px 7px 4px !important;}
-  .jafurah-weather-title{font-size:12px;margin-bottom:6px;letter-spacing:.7px;}
-  .weather-strip{grid-template-columns:repeat(5,minmax(70px,1fr));gap:5px !important;overflow-x:auto !important;scrollbar-width:none;}
-  .weather-strip::-webkit-scrollbar{display:none;}
-  .weather-item{min-height:118px !important;padding-bottom:5px !important;}
-  .weather-day{height:19px;font-size:7px;margin-bottom:5px;}
-  .weather-icon{height:49px;font-size:31px !important;}
-  .weather-temp{font-size:19px !important;margin-top:1px;}
-  .weather-date{font-size:7px;margin-top:2px;}
+  .weather-below-header{padding:8px 5px 4px !important;}
+  .jafurah-weather-title{font-size:11px;margin-bottom:5px;}
+  .weather-strip{grid-template-columns:repeat(5,minmax(0,1fr));gap:3px !important;}
+  .weather-item{min-height:106px !important;padding-bottom:4px !important;}
+  .weather-day{height:18px;font-size:6.5px;margin-bottom:4px;}
+  .weather-icon{height:42px;font-size:27px !important;}
+  .weather-temp{font-size:17px !important;margin-top:1px;}
+  .weather-date{font-size:6.5px;margin-top:2px;}
+  .weather-metrics{font-size:5.7px;gap:1px;margin-top:4px;padding-top:3px;}
   .weather-status{font-size:7px !important;}
 }
+@media(max-width:360px){
+  .weather-item{min-height:101px !important;}
+  .weather-day{font-size:5.8px;}
+  .weather-icon{height:39px;}
+  .weather-temp{font-size:15px !important;}
+  .weather-date{font-size:6px;}
+  .weather-metrics{font-size:5.2px;}
+}
 </style>
+
+<style id="final-10pct-translucent-ui">
+/* ===== FINAL GLASS OVERRIDES ===== */
+.card,.searchbox,.result,.noresult,.top-issuer-card,.stop-top5-card,.issuer-stat{
+  background:rgba(255,255,255,.10) !important;
+  -webkit-backdrop-filter:blur(5px) !important;backdrop-filter:blur(5px) !important;
+}
+/* Weather forecast cards: 5% transparent glass */
+.weather-item,.weather-item.current{
+  background:rgba(255,255,255,.05) !important;
+  -webkit-backdrop-filter:blur(5px) !important;backdrop-filter:blur(5px) !important;
+}
+.weather-day{background:rgba(8,169,223,.70) !important;border-bottom:1px solid rgba(255,255,255,.18);}
+.contacts-tab,.icom-tab{
+  backdrop-filter:blur(6px) !important;-webkit-backdrop-filter:blur(6px) !important;
+  border:1px solid rgba(255,255,255,.22) !important;
+}
+.contacts-tab{background:rgba(24,36,45,.10) !important;}
+.icom-tab{background:rgba(8,127,61,.10) !important;}
+@media(prefers-reduced-motion:reduce){.weather-icon,.weather-icon *{animation:none !important;}}
+</style>
+
 </head><body>
 <div id="weatherAmbient" aria-hidden="true">
   <div class="ambient-sun"></div>
@@ -926,11 +957,11 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
   <div class="weather-below-inner">
     <div class="jafurah-weather-title">JAFURAH WEATHER FORECAST</div>
     <div id="weatherStrip" class="weather-strip" aria-label="5-day Jafurah weather forecast">
-      <div class="weather-item"><div class="weather-day">MONDAY</div><div class="weather-icon">☀️</div><div class="weather-temp">--°C</div><div class="weather-date">--</div></div>
-      <div class="weather-item"><div class="weather-day">TUESDAY</div><div class="weather-icon">🌤️</div><div class="weather-temp">--°C</div><div class="weather-date">--</div></div>
-      <div class="weather-item"><div class="weather-day">WEDNESDAY</div><div class="weather-icon">☁️</div><div class="weather-temp">--°C</div><div class="weather-date">--</div></div>
-      <div class="weather-item"><div class="weather-day">THURSDAY</div><div class="weather-icon">🌤️</div><div class="weather-temp">--°C</div><div class="weather-date">--</div></div>
-      <div class="weather-item"><div class="weather-day">FRIDAY</div><div class="weather-icon">⛈️</div><div class="weather-temp">--°C</div><div class="weather-date">--</div></div>
+      <div class="weather-item"><div class="weather-day">MONDAY</div><div class="weather-icon"><svg viewBox="0 0 64 64" aria-hidden="true"></svg></div><div class="weather-temp">--°C</div><div class="weather-date">--</div><div class="weather-metrics"><span class="weather-metric humidity">💧 --%</span><span class="weather-metric wind">💨 -- km/h</span></div></div>
+      <div class="weather-item"><div class="weather-day">TUESDAY</div><div class="weather-icon"><svg viewBox="0 0 64 64" aria-hidden="true"></svg></div><div class="weather-temp">--°C</div><div class="weather-date">--</div><div class="weather-metrics"><span class="weather-metric humidity">💧 --%</span><span class="weather-metric wind">💨 -- km/h</span></div></div>
+      <div class="weather-item"><div class="weather-day">WEDNESDAY</div><div class="weather-icon"><svg viewBox="0 0 64 64" aria-hidden="true"></svg></div><div class="weather-temp">--°C</div><div class="weather-date">--</div><div class="weather-metrics"><span class="weather-metric humidity">💧 --%</span><span class="weather-metric wind">💨 -- km/h</span></div></div>
+      <div class="weather-item"><div class="weather-day">THURSDAY</div><div class="weather-icon"><svg viewBox="0 0 64 64" aria-hidden="true"></svg></div><div class="weather-temp">--°C</div><div class="weather-date">--</div><div class="weather-metrics"><span class="weather-metric humidity">💧 --%</span><span class="weather-metric wind">💨 -- km/h</span></div></div>
+      <div class="weather-item"><div class="weather-day">FRIDAY</div><div class="weather-icon"><svg viewBox="0 0 64 64" aria-hidden="true"></svg></div><div class="weather-temp">--°C</div><div class="weather-date">--</div><div class="weather-metrics"><span class="weather-metric humidity">💧 --%</span><span class="weather-metric wind">💨 -- km/h</span></div></div>
     </div>
     <div id="weatherStatus" class="weather-status">Connecting to live weather...</div>
   </div>
@@ -1459,18 +1490,35 @@ function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;',
   const cards=[...strip.querySelectorAll('.weather-item')];
 
   function icon(code){
-    if(code===0)return '☀️';
-    if(code===1)return '🌤️';
-    if(code===2)return '⛅';
-    if(code===3)return '☁️';
-    if([45,48].includes(code))return '🌫️';
-    if([51,53,55,56,57].includes(code))return '🌦️';
-    if([61,63,65,66,67].includes(code))return '🌧️';
-    if([71,73,75,77].includes(code))return '🌨️';
-    if([80,81,82].includes(code))return '🌦️';
-    if([85,86].includes(code))return '🌨️';
-    if([95,96,99].includes(code))return '⛈️';
-    return '🌤️';
+    const sun='<g class="wx-sun"><circle cx="32" cy="32" r="12" fill="#FFC928"/><g stroke="#FFB300" stroke-width="3" stroke-linecap="round">'+
+      '<path d="M32 5v7M32 52v7M5 32h7M52 32h7M13 13l5 5M46 46l5 5M51 13l-5 5M18 46l-5 5"/></g></g>';
+    const cloud='<g class="wx-cloud"><ellipse cx="34" cy="42" rx="23" ry="11" fill="#E9EEF3"/><circle cx="24" cy="35" r="12" fill="#F7FAFC"/><circle cx="37" cy="32" r="15" fill="#FFFFFF"/><circle cx="49" cy="40" r="10" fill="#E6ECF2"/></g>';
+    const rain='<g fill="#3D9FE8"><path class="wx-rain" d="M20 52l-3 8" stroke="#3D9FE8" stroke-width="3" stroke-linecap="round"/><path class="wx-rain r2" d="M31 52l-3 9" stroke="#3D9FE8" stroke-width="3" stroke-linecap="round"/><path class="wx-rain r3" d="M42 52l-3 8" stroke="#3D9FE8" stroke-width="3" stroke-linecap="round"/><path class="wx-rain" d="M53 52l-3 7" stroke="#3D9FE8" stroke-width="3" stroke-linecap="round"/></g>';
+    const snow='<g fill="#8CC8F3"><circle cx="21" cy="57" r="3"/><circle cx="33" cy="60" r="3"/><circle cx="45" cy="56" r="3"/><circle cx="53" cy="61" r="2.5"/></g>';
+    const fog='<g stroke="#B8C4CD" stroke-width="4" stroke-linecap="round" opacity=".9"><path d="M12 42h40"/><path d="M18 51h35"/><path d="M10 60h34"/></g>';
+    const bolt='<path class="wx-flash" d="M35 42h-8l7-13h-5l12-17-3 12h7z" fill="#FFD329"/>';
+    let body='';
+    if(code===0) body=sun;
+    else if(code===1) body=sun+cloud;
+    else if(code===2) body=sun+cloud;
+    else if(code===3) body=cloud;
+    else if([45,48].includes(code)) body=cloud+fog;
+    else if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) body=cloud+rain;
+    else if([71,73,75,77,85,86].includes(code)) body=cloud+snow;
+    else if([95,96,99].includes(code)) body=cloud+rain+bolt;
+    else body=sun+cloud;
+    return '<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">'+body+'</svg>';
+  }
+  function iconClass(code){
+    if(code===0)return 'weather-sunny';
+    if(code===1)return 'weather-partly';
+    if(code===2)return 'weather-partly';
+    if(code===3)return 'weather-cloudy';
+    if([45,48].includes(code))return 'weather-fog';
+    if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code))return 'weather-rain';
+    if([71,73,75,77,85,86].includes(code))return 'weather-snow';
+    if([95,96,99].includes(code))return 'weather-storm';
+    return 'weather-partly';
   }
   function weekday(dateString){
     return new Date(dateString+'T12:00:00').toLocaleDateString('en-US',{weekday:'long'}).toUpperCase();
@@ -1487,10 +1535,16 @@ function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;',
       const date=d.time[n];
       const temp=Math.round(d.temperature_2m_max[n]);
       const code=d.weather_code[n];
+      const humidity=Number.isFinite(d.relative_humidity_2m_mean?.[n]) ? Math.round(d.relative_humidity_2m_mean[n]) : null;
+      const wind=Number.isFinite(d.wind_speed_10m_max?.[n]) ? Math.round(d.wind_speed_10m_max[n]) : null;
       card.querySelector('.weather-day').textContent=weekday(date);
-      card.querySelector('.weather-icon').textContent=icon(code);
+      const weatherIcon=card.querySelector('.weather-icon');
+      weatherIcon.innerHTML=icon(code);
+      weatherIcon.className='weather-icon '+iconClass(code);
       card.querySelector('.weather-temp').textContent=(Number.isFinite(temp)?temp:'--')+'°C';
       card.querySelector('.weather-date').textContent=dateLabel(date);
+      card.querySelector('.humidity').textContent='💧 '+(humidity!==null?humidity:'--')+'%';
+      card.querySelector('.wind').textContent='💨 '+(wind!==null?wind:'--')+' km/h';
     }
     const stamp=new Date(data.fetchedAt||Date.now());
     status.textContent=(offline?'OFFLINE • LAST UPDATE ':'● LIVE • UPDATED ')+stamp.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
@@ -1504,7 +1558,7 @@ function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;',
       const latitude=25.495;
       const longitude=49.8773;
       const url=API+'?latitude='+latitude+'&longitude='+longitude+
-        '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max'+
+        '&daily=weather_code,temperature_2m_max,temperature_2m_min,relative_humidity_2m_mean,precipitation_probability_max,wind_speed_10m_max'+
         '&forecast_days=5&timezone=auto';
       const res=await fetch(url,{cache:'no-store',mode:'cors'});
       if(!res.ok)throw new Error('HTTP '+res.status);
