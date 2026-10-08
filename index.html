@@ -949,6 +949,56 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
   }
 }
 </style>
+<style id="contact-icom-final-v3">
+/* FINAL FIX: drawer width must contain the emergency cards.
+   The old desktop width was 300px, while the two emergency cards + padding
+   require about 335px. That is why the vertical tab was sitting on top of
+   the CAMP CLINIC card when the browser was maximized. */
+:root{
+  --side-drawer-width:340px;
+}
+
+.contacts-panel,
+.icom-panel{
+  width:var(--side-drawer-width) !important;
+  left:calc(-1 * var(--side-drawer-width)) !important;
+  right:auto !important;
+  height:100dvh !important;
+  transition:left .3s ease !important;
+  overflow:hidden !important;
+}
+
+.contacts-panel.open,
+.icom-panel.open{
+  left:0 !important;
+  right:auto !important;
+}
+
+/* CLOSED: tab at the screen edge. OPEN: tab just OUTSIDE the drawer.
+   This keeps it from covering the emergency contact cards. */
+.contacts-tab,
+.icom-tab{
+  position:fixed !important;
+  left:0 !important;
+  right:auto !important;
+  transform:none !important;
+  margin:0 !important;
+  box-sizing:border-box !important;
+}
+
+.contacts-panel.open + .contacts-tab,
+.icom-panel.open + .icom-tab{
+  left:var(--side-drawer-width) !important;
+  right:auto !important;
+  transform:none !important;
+}
+
+@media(max-width:600px){
+  :root{--side-drawer-width:min(340px,82vw);}
+  .contacts-tab{top:105px !important;width:23px !important;height:88px !important;}
+  .icom-tab{top:205px !important;width:23px !important;height:80px !important;}
+}
+</style>
 </head><body>
 <div id="weatherAmbient" aria-hidden="true">
   <div class="ambient-sun"></div>
