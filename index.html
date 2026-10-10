@@ -1473,6 +1473,28 @@ function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;',
 .safety-sign.team{font-size:12px;line-height:1.05;padding:10px 3px;}
 @keyframes safetySignBlink{0%,100%{opacity:1;filter:brightness(1)}50%{opacity:.35;filter:brightness(1.35)}}
 @media(prefers-reduced-motion:reduce){.safety-sign{animation:none}}
+
+/* ===== EMERGENCY CONTACT CARDS: COMPACT / TAB-SAFE ===== */
+.emergency-priority{padding:7px 8px 6px}
+.emergency-priority-title{font-size:13px;margin-bottom:6px;letter-spacing:.2px}
+.emergency-priority-grid{gap:5px;min-width:0}
+.emergency-priority-card{min-width:0;padding:6px 4px;border-width:1.5px;border-radius:8px}
+.emergency-priority-label{font-size:9px;line-height:1.05}
+.emergency-priority-number{font-size:clamp(12px,2.6vw,16px);margin:3px auto 2px;padding:2px 1px;letter-spacing:-.3px}
+.emergency-priority-note{font-size:8px;line-height:1.1;overflow-wrap:anywhere}
+@media(max-width:600px){
+  .emergency-priority{padding-right:30px}
+  .emergency-priority-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+  .emergency-priority-card{padding:5px 2px}
+  .emergency-priority-number{font-size:clamp(11px,3vw,14px);letter-spacing:-.45px}
+  .emergency-priority-label{font-size:8px}
+  .emergency-priority-note{font-size:7px}
+}
+@media(max-width:360px){
+  .emergency-priority{padding-right:28px;padding-left:5px}
+  .emergency-priority-grid{gap:3px}
+  .emergency-priority-number{font-size:11px}
+}
 </style>
 <script id="safety-sign-message-cycle">
 (function(){
