@@ -1127,6 +1127,47 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
 }
 </style>
 
+
+<style id="hse-header-reference-typography">
+/* Match the supplied condensed, bold bulletin-header typography only.
+   Preserve the existing industrial background, logos, and header structure. */
+.header-center{
+  max-width:1100px !important;
+  line-height:1.02 !important;
+}
+.header-center h1{
+  font-family:"Arial Narrow","Roboto Condensed","Liberation Sans Narrow",Impact,Arial,sans-serif !important;
+  font-size:clamp(25px,2.2vw,36px) !important;
+  font-stretch:condensed;
+  font-weight:900 !important;
+  letter-spacing:-.65px !important;
+  line-height:1 !important;
+  color:#fff !important;
+  text-transform:uppercase !important;
+  white-space:nowrap;
+}
+.header-center p{
+  font-family:"Arial Narrow","Roboto Condensed","Liberation Sans Narrow",Arial,sans-serif !important;
+  font-size:clamp(15px,1.45vw,23px) !important;
+  font-weight:600 !important;
+  letter-spacing:-.35px !important;
+  line-height:1.05 !important;
+  color:#fff !important;
+  text-transform:uppercase !important;
+  white-space:nowrap;
+}
+.header-center .phase-title{
+  font-size:clamp(15px,1.45vw,23px) !important;
+  font-weight:600 !important;
+  letter-spacing:-.35px !important;
+}
+@media(max-width:700px){
+  .header-center{max-width:100% !important;}
+  .header-center h1{font-size:clamp(22px,6vw,30px) !important;letter-spacing:-.5px !important;white-space:normal;}
+  .header-center p,.header-center .phase-title{font-size:clamp(12px,3.2vw,17px) !important;letter-spacing:-.2px !important;white-space:normal;}
+}
+</style>
+
 </head><body>
 <div id="weatherAmbient" aria-hidden="true">
   <div class="ambient-sun"></div>
@@ -1259,9 +1300,9 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
 <header class="header">
   <img class="logo hyundai" src="https://i.postimg.cc/tsw2FQqV/HEC.png" alt="HEC">
   <div class="header-center">
-    <h1>JAFURAH GAS PLANT EXPANSION</h1>
-    <p class="phase-title">PHASE II PKG 2</p>
-    <p>Utilities, Sulfur &amp; Export Facilities</p>
+    <h1>HSE DEPARTMENT</h1>
+    <p class="phase-title">JAFURAH GAS PLANT EXPANSION PHASE II &ndash; PKG 2</p>
+    <p>UTILITIES, SULFUR &amp; EXPORT FACILITIES</p>
   </div>
   <img class="logo aramco" src="https://i.postimg.cc/DSHB1kvf/HDEC.png" alt="HDEC">
 </header>
