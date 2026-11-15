@@ -1400,26 +1400,102 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
     </div>
   </div>
 </div>
-<div class="card stop-top5-card" id="stopTop5Card"><div class="stop-top5-wrap"><div class="stop-half"><div class="stop-top5-head"><div class="stop-top5-title">🛑 TOP 5 STOP WORK — OCTOBER</div><div class="stop-top5-total">9 notices</div></div><div class="stop-bars"><div class="stop-row"><div class="stop-company">HD SMP1</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.05s"></div></div><div class="stop-count">2</div></div><div class="stop-row"><div class="stop-company">HD SMP2</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.12s"></div></div><div class="stop-count">2</div></div><div class="stop-row"><div class="stop-company">SHINBO</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.19s"></div></div><div class="stop-count">2</div></div><div class="stop-row"><div class="stop-company">HD BUILDING</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:50.00%;animation-delay:0.26s"></div></div><div class="stop-count">1</div></div><div class="stop-row"><div class="stop-company">HD HVAC</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:50.00%;animation-delay:0.33s"></div></div><div class="stop-count">1</div></div></div><div class="stop-tie-note">3-way tie at 2: HD SMP1, HD SMP2, SHINBO.</div></div><div class="stop-half"><div class="stop-top5-head"><div class="stop-top5-title">📊 TOP 5 STOP WORK — OVERALL</div><div class="stop-top5-total">574 notices</div></div><div class="stop-bars"><div class="stop-row"><div class="stop-company">NBTC</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.05s"></div></div><div class="stop-count">93</div></div><div class="stop-row"><div class="stop-company">GUSAN</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:91.40%;animation-delay:0.12s"></div></div><div class="stop-count">85</div></div><div class="stop-row"><div class="stop-company">HD SMP2</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:91.40%;animation-delay:0.19s"></div></div><div class="stop-count">85</div></div><div class="stop-row"><div class="stop-company">HD SMP1</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:75.27%;animation-delay:0.26s"></div></div><div class="stop-count">70</div></div><div class="stop-row"><div class="stop-company">SHINBO</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:37.63%;animation-delay:0.33s"></div></div><div class="stop-count">35</div></div></div><div class="stop-tie-note"></div></div></div></div></section><section class="card stop-issuer-card" id="stopIssuerCard" aria-label="Stop Work issuer rankings">
-<style>
-.stop-issuer-card{grid-column:span 3;border:1px solid #f07814;border-radius:10px;padding:12px 16px;margin-top:12px;background:rgba(245,247,250,.94);color:#263746;box-shadow:0 3px 12px rgba(0,0,0,.12)}
-.stop-issuer-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.issuer-rank-half+.issuer-rank-half{border-left:1px solid rgba(232,121,23,.25);padding-left:16px}
-.issuer-rank-head{display:flex;justify-content:space-between;align-items:center;color:#c65e00;font-size:13px;margin-bottom:8px}
-.issuer-rank-head span{font-size:11px;color:#58636b}
-.issuer-rank-row{display:grid;grid-template-columns:130px minmax(60px,1fr) 24px;gap:8px;align-items:center;margin:7px 0;font-size:11px;font-weight:700}
-.issuer-rank-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.issuer-rank-track{height:9px;background:#eee1d3;border-radius:8px;overflow:hidden}
-.issuer-rank-bar{height:100%;background:linear-gradient(90deg,#ed7b13,#f7a23b);border-radius:8px}
-.issuer-rank-row strong{text-align:right;color:#c65e00}
-@media(max-width:700px){.stop-issuer-wrap{grid-template-columns:1fr}.issuer-rank-half+.issuer-rank-half{border-left:0;border-top:1px solid rgba(232,121,23,.25);padding:10px 0 0;margin-top:4px}.issuer-rank-row{grid-template-columns:105px minmax(50px,1fr) 24px}}
+<div class="card stop-top5-card" id="stopTop5Card"><div class="stop-top5-wrap"><div class="stop-half"><div class="stop-top5-head"><div class="stop-top5-title">🛑 TOP 5 STOP WORK — OCTOBER</div><div class="stop-top5-total">9 notices</div></div><div class="stop-bars"><div class="stop-row"><div class="stop-company">HD SMP1</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.05s"></div></div><div class="stop-count">2</div></div><div class="stop-row"><div class="stop-company">HD SMP2</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.12s"></div></div><div class="stop-count">2</div></div><div class="stop-row"><div class="stop-company">SHINBO</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.19s"></div></div><div class="stop-count">2</div></div><div class="stop-row"><div class="stop-company">HD BUILDING</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:50.00%;animation-delay:0.26s"></div></div><div class="stop-count">1</div></div><div class="stop-row"><div class="stop-company">HD HVAC</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:50.00%;animation-delay:0.33s"></div></div><div class="stop-count">1</div></div></div><div class="stop-tie-note">3-way tie at 2: HD SMP1, HD SMP2, SHINBO.</div></div><div class="stop-half"><div class="stop-top5-head"><div class="stop-top5-title">📊 TOP 5 STOP WORK — OVERALL</div><div class="stop-top5-total">574 notices</div></div><div class="stop-bars"><div class="stop-row"><div class="stop-company">NBTC</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.05s"></div></div><div class="stop-count">93</div></div><div class="stop-row"><div class="stop-company">GUSAN</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:91.40%;animation-delay:0.12s"></div></div><div class="stop-count">85</div></div><div class="stop-row"><div class="stop-company">HD SMP2</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:91.40%;animation-delay:0.19s"></div></div><div class="stop-count">85</div></div><div class="stop-row"><div class="stop-company">HD SMP1</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:75.27%;animation-delay:0.26s"></div></div><div class="stop-count">70</div></div><div class="stop-row"><div class="stop-company">SHINBO</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:37.63%;animation-delay:0.33s"></div></div><div class="stop-count">35</div></div></div><div class="stop-tie-note"></div></div></div></div></section><div class="card top-issuer-card stop-top-issuer-card" id="topStopIssuerCard">
+  <div class="issuer-label"><span class="issuer-trophy">🛑</span>TOP STOP WORK ISSUER — NOVEMBER</div>
+  <div class="issuer-layout">
+    <div class="issuer-main">
+      <div class="issuer-name" id="topStopIssuerName">Loading...</div>
+      <div class="issuer-meta" id="topStopIssuerMeta">Stop Work Issuer</div>
+      <div class="issuer-stats">
+        <div class="issuer-stat"><div class="issuer-stat-value" id="topStopIssuerMonthCount">0</div><div class="issuer-stat-label">This Month</div></div>
+        <div class="issuer-stat"><div class="issuer-stat-value" id="topStopIssuerOverallCount">0</div><div class="issuer-stat-label">Overall Issued</div></div>
+      </div>
+    </div>
+    <div class="issuer-rankings">
+      <div class="issuer-rank-title">MONTHLY NEXT ISSUERS</div>
+      <div class="issuer-rank-list" id="stopIssuerRankList"></div>
+      <div class="issuer-rank-tie" id="stopIssuerThirdTie"></div>
+    </div>
+  </div>
+</div>
+<style id="stop-issuer-match-warning-issuer">
+/* Keep the Stop Work issuer card visually aligned with Top Warning Issuer. */
+.stop-top-issuer-card{border-top:4px solid #e87917 !important;}
+.stop-top-issuer-card .issuer-label{color:#c65e00 !important;}
+.stop-top-issuer-card .issuer-name{color:#c65e00 !important;}
+.stop-top-issuer-card .issuer-stat-value{color:#c65e00 !important;}
+.stop-top-issuer-card .issuer-rank-badge{background:#fff0df !important;color:#c65e00 !important;}
+.stop-top-issuer-card .issuer-rank-list .issuer-rank-row strong{color:#c65e00 !important;}
+@media(min-width:1101px){.kpis #topStopIssuerCard{grid-column:3 / span 2 !important;grid-row:3 !important;}}
+@media(max-width:1100px) and (min-width:651px){.kpis #topStopIssuerCard{grid-column:1 / span 2 !important;}}
+@media(max-width:650px){.kpis #topStopIssuerCard{grid-column:1 !important;}}
 </style>
-<div class="stop-issuer-wrap">
-<div class="issuer-rank-half"><div class="issuer-rank-head"><b>🛑 TOP STOP WORK ISSUERS — NOVEMBER</b><span>7 notices</span></div><div class="issuer-rank-rows"><div class="issuer-rank-row"><span class="issuer-rank-name">Ephraim Faraon</span><div class="issuer-rank-track"><div class="issuer-rank-bar" style="width:100.00%"></div></div><strong>2</strong></div><div class="issuer-rank-row"><span class="issuer-rank-name">Jeffey Ligutan</span><div class="issuer-rank-track"><div class="issuer-rank-bar" style="width:100.00%"></div></div><strong>2</strong></div><div class="issuer-rank-row"><span class="issuer-rank-name">Rio Comajig</span><div class="issuer-rank-track"><div class="issuer-rank-bar" style="width:50.00%"></div></div><strong>1</strong></div><div class="issuer-rank-row"><span class="issuer-rank-name">Najrul Warsi</span><div class="issuer-rank-track"><div class="issuer-rank-bar" style="width:50.00%"></div></div><strong>1</strong></div><div class="issuer-rank-row"><span class="issuer-rank-name">Daniel Dela Cruz</span><div class="issuer-rank-track"><div class="issuer-rank-bar" style="width:50.00%"></div></div><strong>1</strong></div></div></div>
-<div class="issuer-rank-half"><div class="issuer-rank-head"><b>📊 TOP STOP WORK ISSUERS — OVERALL</b><span>620 notices</span></div><div class="issuer-rank-rows"><div class="issuer-rank-row"><span class="issuer-rank-name">Rico Molejon</span><div class="issuer-rank-track"><div class="issuer-rank-bar" style="width:100.00%"></div></div><strong>45</strong></div><div class="issuer-rank-row"><span class="issuer-rank-name">Michael De Guzman</span><div class="issuer-rank-track"><div class="issuer-rank-bar" style="width:66.67%"></div></div><strong>30</strong></div><div class="issuer-rank-row"><span class="issuer-rank-name">Marvin Dela Cruz</span><div class="issuer-rank-track"><div class="issuer-rank-bar" style="width:77.78%"></div></div><strong>35</strong></div><div class="issuer-rank-row"><span class="issuer-rank-name">Jeffey Ligutan</span><div class="issuer-rank-track"><div class="issuer-rank-bar" style="width:77.78%"></div></div><strong>35</strong></div><div class="issuer-rank-row"><span class="issuer-rank-name">Ephraim Faraon</span><div class="issuer-rank-track"><div class="issuer-rank-bar" style="width:73.33%"></div></div><strong>33</strong></div></div></div>
-</div></section>
-
-
+<script id="top-stop-issuer-script">
+(function(){
+  function parseStopDate(v){
+    const s=String(v??'').trim();
+    if(!s)return null;
+    const m=s.match(/^(\d{1,2})[-\/\s]([A-Za-z]{3})[-\/\s]?(\d{2,4})$/);
+    if(m){
+      let y=Number(m[3]); if(y<100)y+=2000;
+      const months={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+      const mo=months[m[2].toLowerCase()];
+      if(mo!==undefined)return new Date(y,mo,Number(m[1]));
+    }
+    const d=new Date(s);
+    return isNaN(d.getTime())?null:d;
+  }
+  function escStop(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  function animateStopNumber(el,target){
+    if(!el)return;
+    const end=Math.max(0,Number(target)||0);
+    let n=0; const step=Math.max(1,Math.ceil(end/18));
+    clearInterval(el._stopIssuerTimer);
+    el._stopIssuerTimer=setInterval(()=>{n=Math.min(end,n+step);el.textContent=n.toLocaleString();if(n>=end)clearInterval(el._stopIssuerTimer);},45);
+  }
+  function updateTopStopIssuer(){
+    const dataEl=document.getElementById('stopwork-data'),card=document.getElementById('topStopIssuerCard');
+    if(!dataEl||!card)return;
+    let data;try{data=JSON.parse(dataEl.textContent);}catch(e){return;}
+    const ix=Object.fromEntries((data.columns||[]).map((c,i)=>[c,i]));
+    const rows=Array.isArray(data.rows)?data.rows:[];
+    const monthCounts=Object.create(null),overallCounts=Object.create(null);
+    rows.forEach(r=>{
+      const raw=String(r[ix['Issued By']]??'').trim();
+      if(!raw)return;
+      const issuer=raw.replace(/\s+/g,' ').toUpperCase();
+      overallCounts[issuer]=(overallCounts[issuer]||0)+1;
+      const d=parseStopDate(r[ix['Issued Date']]||r[ix['Date of Submission']]);
+      const now=new Date();
+      if(d&&d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth())
+        monthCounts[issuer]=(monthCounts[issuer]||0)+1;
+    });
+    const ranked=Object.keys(monthCounts).sort((a,b)=>monthCounts[b]-monthCounts[a]||a.localeCompare(b));
+    const months=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+    const label=card.querySelector('.issuer-label');
+    if(label)label.innerHTML='<span class="issuer-trophy">🛑</span>TOP STOP WORK ISSUER — '+months[new Date().getMonth()];
+    if(!ranked.length){
+      document.getElementById('topStopIssuerName').textContent='No monthly records';
+      document.getElementById('topStopIssuerMeta').textContent='No Stop Work notices recorded this month';
+      animateStopNumber(document.getElementById('topStopIssuerMonthCount'),0);
+      animateStopNumber(document.getElementById('topStopIssuerOverallCount'),rows.length);
+      document.getElementById('stopIssuerRankList').innerHTML='';
+      return;
+    }
+    const leader=ranked[0];
+    document.getElementById('topStopIssuerName').textContent=leader;
+    document.getElementById('topStopIssuerMeta').textContent='Stop Work Issuer';
+    animateStopNumber(document.getElementById('topStopIssuerMonthCount'),monthCounts[leader]||0);
+    animateStopNumber(document.getElementById('topStopIssuerOverallCount'),overallCounts[leader]||0);
+    const list=document.getElementById('stopIssuerRankList');
+    list.innerHTML=ranked.slice(1).map((name,i)=>'<div class="issuer-rank-row"><span class="issuer-rank-badge">'+(i+2)+'</span><span class="issuer-rank-name">'+escStop(name)+'</span><strong>'+(monthCounts[name]||0).toLocaleString()+'</strong></div>').join('');
+    const third=ranked[2];
+    const tied=third?ranked.filter(x=>x!==leader&&monthCounts[x]===monthCounts[third]&&x!==third):[];
+    document.getElementById('stopIssuerThirdTie').textContent=tied.length?tied.join(' / ')+' also issued '+monthCounts[third]:'';
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',updateTopStopIssuer);else updateTopStopIssuer();
+})();
+</script>
 <style id="disciplinary-list-styles">
 .disciplinary-lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0 28px;}
 .disciplinary-card{min-width:0;background:rgba(12,25,38,.94);border:1px solid rgba(255,255,255,.14);border-radius:16px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.22);color:#f5f7fa;}
