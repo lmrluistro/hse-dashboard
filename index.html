@@ -1335,19 +1335,19 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
 <main class="wrap">
 
 <style id="warning-category-summary-styles">
-.warning-category-card{grid-column:2!important;grid-row:1!important;min-width:0;min-height:0;padding:13px 14px;border-top:4px solid #087f3d;background:rgba(255,255,255,.97);display:flex;flex-direction:column;}
+.warning-category-card{grid-column:3 / span 2!important;grid-row:1!important;min-width:0;min-height:0;padding:13px 14px;border-top:4px solid #087f3d;background:rgba(255,255,255,.97);display:flex;flex-direction:column;}
 .category-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #e3e8ec}
 .category-card-title{font-size:13px;font-weight:900;color:#17324a;letter-spacing:.25px}
 .category-total{font-size:11px;font-weight:800;color:#087f3d;background:#e8f5ec;border-radius:20px;padding:5px 8px;white-space:nowrap}
-.category-list{max-height:390px;overflow-y:auto;padding-right:4px}
-.category-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:5px 2px;border-bottom:1px solid #edf0f2;font-size:11px;line-height:1.25}
+.category-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:18px;align-content:start;overflow:visible;max-height:none;padding-right:0}
+.category-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:5px 2px;border-bottom:1px solid #edf0f2;font-size:11px;line-height:1.25;min-width:0}
 .category-row:last-child{border-bottom:0}.category-name{color:#344454;overflow-wrap:anywhere}.category-count{font-weight:800;color:#17212b;text-align:right;min-width:28px}
 .category-row.review-required{background:#fff8e8;margin:2px -2px;padding:6px 4px;border-radius:4px}.category-row.review-required .category-name,.category-row.review-required .category-count{font-weight:900;color:#a65d00}
 .category-card-foot{font-size:10px;color:#6a7680;border-top:1px solid #e3e8ec;padding-top:7px;margin-top:7px}
 .category-loading{font-size:12px;color:#687783;padding:12px 2px}
-@media(min-width:1101px){.kpis>.card.red{grid-column:1!important;grid-row:1!important}.kpis>.card.orange{grid-column:3!important;grid-row:1!important}#topIssuerCard{grid-column:1 / span 2!important;grid-row:2!important}#stopTop5Card{grid-column:3 / span 2!important;grid-row:2!important}}
-@media(max-width:1100px) and (min-width:701px){.warning-category-card{grid-column:2!important;grid-row:1!important}.kpis>.card.red{grid-column:1!important;grid-row:1!important}.kpis>.card.orange{grid-column:1!important;grid-row:2!important}#topIssuerCard,#stopTop5Card{grid-column:span 2!important}}
-@media(max-width:700px){.warning-category-card{grid-column:1!important;grid-row:auto!important}.category-list{max-height:330px}.kpis>.card.red,.kpis>.card.orange,#topIssuerCard,#stopTop5Card{grid-column:1!important;grid-row:auto!important}}
+@media(min-width:1101px){.kpis>.card.red{grid-column:1!important;grid-row:1!important}.kpis>.card.orange{grid-column:2!important;grid-row:1!important}.warning-category-card{grid-column:3 / span 2!important;grid-row:1!important}#topIssuerCard{grid-column:1 / span 2!important;grid-row:2!important}#stopTop5Card{grid-column:3 / span 2!important;grid-row:2!important}}
+@media(max-width:1100px) and (min-width:651px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}.kpis>.card.red{grid-column:1!important;grid-row:1!important}.kpis>.card.orange{grid-column:2!important;grid-row:1!important}.warning-category-card{grid-column:1 / span 2!important;grid-row:2!important}#topIssuerCard,#stopTop5Card{grid-column:span 2!important}}
+@media(max-width:650px){.warning-category-card{grid-column:1!important;grid-row:auto!important}.category-list{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:10px}.kpis>.card.red,.kpis>.card.orange,#topIssuerCard,#stopTop5Card{grid-column:1!important;grid-row:auto!important}}
 </style>
 <script id="warning-category-summary-renderer">
 (function(){
@@ -1375,11 +1375,11 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
 })();
 </script>
 
-<section class="kpis"><div class="card red"><div class="label">WARNING NOTICES</div><div class="value">2,162</div><div class="sub">October 2026: 279</div></div><section class="card warning-category-card" id="warningCategoryCard" aria-label="Warning notice category summary">
+<section class="kpis"><div class="card red"><div class="label">WARNING NOTICES</div><div class="value">2,162</div><div class="sub">October 2026: 279</div></div><div class="card orange"><div class="label">STOP WORK NOTICES</div><div class="value">574</div><div class="sub">October 2026: 9</div></div><section class="card warning-category-card" id="warningCategoryCard" aria-label="Warning notice category summary">
   <div class="category-card-head"><div class="category-card-title">📊 WARNING NOTICE CATEGORIES</div><div class="category-total" id="warningCategoryTotal">0 notices</div></div>
   <div class="category-list" id="warningCategoryList"><div class="category-loading">Loading category counts...</div></div>
   <div class="category-card-foot" id="warningCategoryFoot">Counts are based on the current warning notice log.</div>
-</section><div class="card orange"><div class="label">STOP WORK NOTICES</div><div class="value">574</div><div class="sub">October 2026: 9</div></div><div class="card top-issuer-card" id="topIssuerCard">
+</section><div class="card top-issuer-card" id="topIssuerCard">
   <div class="issuer-label"><span class="issuer-trophy">🏆</span>TOP WARNING ISSUER — OCTOBER</div>
   <div class="issuer-layout">
     <div class="issuer-main">
