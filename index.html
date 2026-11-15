@@ -1365,6 +1365,8 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
   const items=CATEGORIES.map(c=>({name:c,count:counts[c]}));
   items.push({name:'Review Required',count:review,review:true});
   if(other)items.push({name:'Other / Unmapped',count:other,review:true});
+  // Highest violation count first; ties are sorted alphabetically for consistency.
+  items.sort((a,b)=>b.count-a.count || a.name.localeCompare(b.name));
   list.innerHTML=items.map(x=>'<div class="category-row'+(x.review?' review-required':'')+'"><span class="category-name">'+esc(x.name)+'</span><span class="category-count">'+x.count.toLocaleString()+'</span></div>').join('');
   total.textContent=rows.length.toLocaleString()+' notices';
   if(foot)foot.textContent='26 standard categories + Review Required · Automatically recalculated from the current warning log.';
