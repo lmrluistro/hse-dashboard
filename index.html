@@ -1615,7 +1615,7 @@ html{scroll-behavior:smooth;scroll-padding-top:20px;overflow-x:clip}body{min-wid
     filtered.sort((a,b)=>{const value=normalize(a[key]).localeCompare(normalize(b[key]),undefined,{sensitivity:'base',numeric:true});return descending?-value:value});
     rowsEl.innerHTML=filtered.map(p=>'<tr><td>'+escape(p.name)+'</td><td>'+escape(p.position)+'</td><td>'+escape(p.location)+'</td></tr>').join('');
     cardsEl.innerHTML=filtered.map(p=>'<article class="deployment-person-card"><h3>'+escape(p.name)+'</h3><p>'+escape(p.position)+'</p><p><span>Assigned Location</span><strong>'+escape(p.location)+'</strong></p></article>').join('');
-    totalEl.textContent=filtered.length+' '+(filtered.length===1?'person':'personnel');
+    totalEl.textContent=people.length+' personnel';
     emptyEl.hidden=filtered.length>0;
     document.querySelectorAll('.deployment-table th').forEach(th=>{const button=th.querySelector('[data-sort]');const active=button?.dataset.sort===key;th.setAttribute('aria-sort',active?(descending?'descending':'ascending'):'none')});
   }
