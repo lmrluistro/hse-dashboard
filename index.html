@@ -1189,6 +1189,26 @@ html{scroll-behavior:smooth;scroll-padding-top:20px;overflow-x:clip}body{min-wid
 @media(orientation:landscape) and (max-height:520px) and (max-width:900px){.header{min-height:78px}.weather-below-header{padding-top:6px}.weather-dashboard-layout{grid-template-columns:repeat(2,minmax(0,1fr))!important}.contacts-panel,.icom-panel{height:100dvh}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#hseNav{transition:none}}
 </style>
+
+<style id="unified-translucent-dashboard-boxes">
+/* Unified translucent glass treatment for dashboard cards and panels */
+:root{--hse-glass-bg:rgba(255,255,255,.12);--hse-glass-border:rgba(255,255,255,.28);--hse-glass-blur:8px;}
+.card,.warning-category-card,.top-issuer-card,.stop-top5-card,.searchbox,.result,.noresult,.contacts-panel,.icom-panel,.weather-item,.weather-item.current,.profile,.dashboard-panel,.section-card{
+  background:var(--hse-glass-bg)!important;
+  border:1px solid var(--hse-glass-border)!important;
+  -webkit-backdrop-filter:blur(var(--hse-glass-blur)) saturate(125%)!important;
+  backdrop-filter:blur(var(--hse-glass-blur)) saturate(125%)!important;
+  box-shadow:0 5px 18px rgba(0,25,50,.10)!important;
+}
+.warning-category-card{border-top:4px solid rgba(8,127,61,.82)!important;}
+.category-card-head{border-bottom-color:rgba(255,255,255,.28)!important;}
+.category-row{border-bottom-color:rgba(255,255,255,.20)!important;}
+.category-name,.category-count,.category-card-title,.category-card-foot{color:inherit;}
+.category-row.review-required{background:rgba(255,248,232,.22)!important;}
+@media(prefers-reduced-transparency:reduce){
+ .card,.warning-category-card,.top-issuer-card,.stop-top5-card,.searchbox,.result,.noresult,.contacts-panel,.icom-panel,.weather-item,.weather-item.current,.profile,.dashboard-panel,.section-card{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(255,255,255,.88)!important;}
+}
+</style>
 </head><body>
 <div id="weatherAmbient" aria-hidden="true">
   <div class="ambient-sun"></div>
