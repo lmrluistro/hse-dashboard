@@ -1404,6 +1404,7 @@ html{scroll-behavior:smooth;scroll-padding-top:20px;overflow-x:clip}body{min-wid
       <div class="issuer-stats">
         <div class="issuer-stat"><div class="issuer-stat-value" id="topIssuerMonthCount">29</div><div class="issuer-stat-label">This Month</div></div>
         <div class="issuer-stat"><div class="issuer-stat-value" id="topIssuerOverallCount">135</div><div class="issuer-stat-label">Overall Issued</div></div>
+        <div class="issuer-stat"><div class="issuer-stat-value" id="totalMonthlyWarningCount">0</div><div class="issuer-stat-label">Total Monthly Warning Letters</div></div>
       </div>
       <div class="issuer-category-breakdown" id="topIssuerCategoryBreakdown">
         <div class="issuer-category-heading">THIS MONTH'S CATEGORY BREAKDOWN</div>
@@ -2004,12 +2005,17 @@ function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;',
     const li=Object.fromEntries(LD.columns.map((c,i)=>[c,i]));
     const rows=Array.isArray(LD.rows)?LD.rows:[];
     const now=new Date(), monthCounts=Object.create(null), overallCounts=Object.create(null);
+    let totalMonthlyWarnings=0;
     rows.forEach(r=>{
       const raw=String(r[li['ISSUED BY']]??'').trim(); if(!raw)return;
       const issuer=issuerPerson(raw); overallCounts[issuer]=(overallCounts[issuer]||0)+1;
       const d=parseHseDate(r[li['ISSUE DATE']]);
-      if(d&&d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth()) monthCounts[issuer]=(monthCounts[issuer]||0)+1;
+      if(d&&d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth()){
+        monthCounts[issuer]=(monthCounts[issuer]||0)+1;
+        totalMonthlyWarnings++;
+      }
     });
+    animateNumber(document.getElementById('totalMonthlyWarningCount'),totalMonthlyWarnings);
     const ranked=Object.keys(monthCounts).sort((a,b)=>monthCounts[b]-monthCounts[a]||a.localeCompare(b));
     if(!ranked.length)return;
     const issuer=ranked[0];
