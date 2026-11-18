@@ -579,14 +579,17 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
 }
 </style>
 <style id="hse-weather-ambient">
-/* HSE WEATHER AMBIENT — full-screen weather atmosphere */
-#weatherAmbient{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;opacity:0;transition:opacity 1.2s ease;background:transparent}
+/* HSE WEATHER AMBIENT — full-screen foreground weather atmosphere; pointer-events remain disabled so dashboard controls stay usable. */
+#weatherAmbient{position:fixed;inset:0;z-index:2147483000;pointer-events:none;overflow:hidden;opacity:0;transition:opacity 1.2s ease;background:transparent;isolation:isolate}
 #weatherAmbient.active{opacity:1}
 #weatherAmbient .ambient-sun{position:absolute;width:min(55vw,620px);height:min(55vw,620px);right:-10vw;top:-18vw;border-radius:50%;background:radial-gradient(circle,rgba(255,246,174,.82) 0%,rgba(255,221,91,.34) 18%,rgba(255,190,40,.13) 42%,transparent 70%);filter:blur(2px);animation:hseSunPulse 5s ease-in-out infinite}
 #weatherAmbient .ambient-sun:before,#weatherAmbient .ambient-sun:after{content:"";position:absolute;inset:-45%;background:conic-gradient(from 0deg,transparent 0 8%,rgba(255,230,112,.12) 10%,transparent 13% 23%,rgba(255,236,147,.16) 25%,transparent 28% 41%,rgba(255,220,89,.12) 44%,transparent 47% 63%,rgba(255,240,160,.14) 66%,transparent 69% 84%,rgba(255,220,89,.12) 87%,transparent 90%);mask-image:radial-gradient(circle,black 0 35%,transparent 70%);animation:hseSunRotate 28s linear infinite}
 #weatherAmbient .ambient-sun:after{animation-direction:reverse;animation-duration:42s;opacity:.75}
 #weatherAmbient .rain-layer{position:absolute;inset:-15%;background-image:repeating-linear-gradient(105deg,transparent 0 9px,rgba(220,240,255,.26) 10px,rgba(220,240,255,.26) 11px,transparent 12px 25px);background-size:80px 130px;transform:rotate(5deg);animation:hseRainFall .48s linear infinite;filter:blur(.15px);opacity:.72}
 #weatherAmbient .rain-glow{position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,73,105,.22),rgba(30,55,82,.08) 45%,rgba(10,30,50,.18));mix-blend-mode:multiply}
+#weatherAmbient .lightning-layer{position:absolute;inset:0;background:rgba(225,239,255,.42);opacity:0;animation:hseLightning 7s infinite;}
+#weatherAmbient .snow-layer{position:absolute;inset:-10%;background-image:radial-gradient(circle,rgba(255,255,255,.95) 0 2px,transparent 3px),radial-gradient(circle,rgba(255,255,255,.8) 0 1.5px,transparent 2.5px),radial-gradient(circle,rgba(255,255,255,.72) 0 1px,transparent 2px);background-size:95px 110px,145px 160px,65px 85px;background-position:0 0,35px 50px,18px 28px;animation:hseSnowFall 8s linear infinite;opacity:.82}
+#weatherAmbient .wind-layer{position:absolute;inset:0;background:repeating-linear-gradient(165deg,transparent 0 42px,rgba(255,255,255,.18) 43px,transparent 45px 86px);animation:hseWindSweep 2.8s linear infinite;opacity:.6}
 #weatherAmbient .dust-haze{position:absolute;inset:-20%;background:radial-gradient(ellipse at 50% 45%,rgba(211,151,70,.16),rgba(161,103,44,.23) 45%,rgba(120,73,28,.34) 100%);animation:hseDustDrift 9s ease-in-out infinite alternate}
 #weatherAmbient .dust-particles{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(230,190,125,.52) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(180,125,67,.42) 0 1.2px,transparent 1.7px);background-size:47px 39px,83px 71px;background-position:0 0,17px 29px;animation:hseDustMove 3.2s linear infinite;opacity:.58;filter:blur(.2px)}
 #weatherAmbient .cloud-haze{position:absolute;inset:0;background:linear-gradient(180deg,rgba(120,140,157,.22),rgba(78,99,117,.08) 55%,transparent);animation:hseCloudPulse 8s ease-in-out infinite}
@@ -598,6 +601,9 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));}
 @keyframes hseDustDrift{0%{transform:translateX(-2%)}100%{transform:translateX(3%)}}
 @keyframes hseDustMove{to{background-position:130px 20px,-110px 95px}}
 @keyframes hseCloudPulse{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes hseLightning{0%,88%,90%,93%,100%{opacity:0}89%,91%{opacity:.8}92%{opacity:.15}}
+@keyframes hseSnowFall{to{background-position:80px 500px,-40px 620px,120px 430px}}
+@keyframes hseWindSweep{to{transform:translateX(12%) translateY(-3%)}}
 @media(prefers-reduced-motion:reduce){#weatherAmbient *{animation:none!important}}
 </style>
 <style id="top-warning-issuer-revised-layout">
@@ -1188,6 +1194,9 @@ html{scroll-behavior:smooth;scroll-padding-top:20px;overflow-x:clip}body{min-wid
   <div class="ambient-sun"></div>
   <div class="rain-layer"></div>
   <div class="rain-glow"></div>
+  <div class="lightning-layer"></div>
+  <div class="snow-layer"></div>
+  <div class="wind-layer"></div>
   <div class="dust-haze"></div>
   <div class="dust-particles"></div>
   <div class="cloud-haze"></div>
@@ -2159,22 +2168,26 @@ function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;',
   'use strict';
   const root=document.getElementById('weatherAmbient');
   if(!root)return;
-  const layers={sun:root.querySelector('.ambient-sun'),rain:root.querySelector('.rain-layer'),rainGlow:root.querySelector('.rain-glow'),dust:root.querySelector('.dust-haze'),particles:root.querySelector('.dust-particles'),cloud:root.querySelector('.cloud-haze'),night:root.querySelector('.night-haze')};
+  const layers={sun:root.querySelector('.ambient-sun'),rain:root.querySelector('.rain-layer'),rainGlow:root.querySelector('.rain-glow'),lightning:root.querySelector('.lightning-layer'),snow:root.querySelector('.snow-layer'),wind:root.querySelector('.wind-layer'),dust:root.querySelector('.dust-haze'),particles:root.querySelector('.dust-particles'),cloud:root.querySelector('.cloud-haze'),night:root.querySelector('.night-haze')};
   function setMode(code,isDay,wind,visibility){
-    const n=Number(code); const w=Number(wind); const v=Number(visibility);
-    const dust=(Number.isFinite(v)&&v<=3000&&Number.isFinite(w)&&w>=25&&!([45,48].includes(n)));
+    const n=Number(code),w=Number(wind),v=Number(visibility);
+    const thunder=[95,96,99].includes(n);
+    const snow=[71,73,75,77,85,86].includes(n);
     const rain=[51,53,55,56,57,61,63,65,66,67,80,81,82].includes(n);
-    const cloudy=[2,3].includes(n);
-    const fog=[45,48].includes(n);
-    const clear=[0,1].includes(n);
+    const fog=[45,48].includes(n),cloudy=[2,3].includes(n),clear=[0,1].includes(n);
+    const dusty=Number.isFinite(w)&&w>=28&&Number.isFinite(v)&&v<=5000&&!fog&&!rain&&!snow&&!thunder;
+    const windy=Number.isFinite(w)&&w>=30;
     Object.values(layers).forEach(el=>{if(el)el.style.display='none'});
     root.classList.add('active');
-    if(dust){layers.dust.style.display='block';layers.particles.style.display='block';}
+    if(dusty){layers.dust.style.display='block';layers.particles.style.display='block';}
+    else if(thunder){layers.rain.style.display='block';layers.rainGlow.style.display='block';layers.lightning.style.display='block';}
     else if(rain){layers.rain.style.display='block';layers.rainGlow.style.display='block';}
+    else if(snow){layers.snow.style.display='block';layers.cloud.style.display='block';}
     else if(clear&&isDay){layers.sun.style.display='block';}
     else if(cloudy||fog){layers.cloud.style.display='block';}
     else if(!isDay){layers.night.style.display='block';}
-    root.dataset.mode=dust?'dust':rain?'rain':clear&&isDay?'sunny':cloudy?'cloudy':fog?'fog':!isDay?'night':'neutral';
+    if(windy&&!dusty&&!rain&&!snow&&!thunder)layers.wind.style.display='block';
+    root.dataset.mode=dusty?'dust':thunder?'thunderstorm':rain?'rain':snow?'snow':clear&&isDay?'sunny':fog?'fog':cloudy?'cloudy':windy?'windy':!isDay?'night':'neutral';
   }
   window.HSEWeatherAmbient={setMode:setMode};
 })();
@@ -2208,6 +2221,7 @@ function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;',
   const d=data.daily,c=data.current||{},todayIndex=0;
   const max=d.temperature_2m_max?.[todayIndex],min=d.temperature_2m_min?.[todayIndex],code=d.weather_code?.[todayIndex];
   const currentTemp=Number.isFinite(c.temperature_2m)?Math.round(c.temperature_2m):Math.round(max);
+  if(window.HSEWeatherAmbient && Number.isFinite(c.weather_code)){window.HSEWeatherAmbient.setMode(c.weather_code,Number(c.is_day)===1,c.wind_speed_10m,c.visibility); }
   setText('todayDate',dateLabel(d.time[0],{weekday:'long',month:'long',day:'numeric'}));
   setText('todayTemp',(Number.isFinite(currentTemp)?currentTemp:'--')+'°C');
   setText('todayCondition',description(Number.isFinite(c.weather_code)?c.weather_code:code));
@@ -2242,7 +2256,7 @@ function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;',
  function load(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(x){render(x,true);return true;}}catch(e){}return false;}
  async function fetchWeather(){
   try{
-   const url=API+'?latitude=25.495&longitude=49.8773&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,relative_humidity_2m_mean,precipitation_probability_max,wind_speed_10m_max,uv_index_max,sunrise,sunset&forecast_days=1&timezone=auto';
+   const url=API+'?latitude=25.495&longitude=49.8773&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m,wind_direction_10m,visibility&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,relative_humidity_2m_mean,precipitation_probability_max,wind_speed_10m_max,uv_index_max,sunrise,sunset&forecast_days=1&timezone=auto';
    const res=await fetch(url,{cache:'no-store',mode:'cors'});if(!res.ok)throw new Error('HTTP '+res.status);
    const data=await res.json();if(!data.daily||!Array.isArray(data.daily.time)||data.daily.time.length<1)throw new Error('Incomplete forecast');
    data.fetchedAt=Date.now();data.locationName='Jafurah Gas Plant';save(data);render(data,false);
