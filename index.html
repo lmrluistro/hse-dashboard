@@ -2542,4 +2542,34 @@ function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;',
   window.HSEPanelState={open:openPanel,close:closePanel,closeAll};
 })();
 </script>
+
+<style id="hse-safety-profile-readable-contrast">
+/* Improve visibility of Hyundai/HSE/Safety employee search profiles.
+   Keep the developer signature profile's separate navy-and-gold design. */
+.profile.hyundai-safety:not(.developer-profile){
+  background:rgba(255,255,255,.88)!important;
+  color:#17212b!important;
+  border-top:4px solid #087f3d!important;
+  border-radius:10px;
+  box-shadow:0 4px 14px rgba(15,35,50,.12);
+}
+.profile.hyundai-safety:not(.developer-profile) .field{
+  background:rgba(255,255,255,.78)!important;
+  border-right:1px solid rgba(35,55,70,.14)!important;
+  border-bottom:1px solid rgba(35,55,70,.14)!important;
+}
+.profile.hyundai-safety:not(.developer-profile) .field b{
+  color:#526171!important;
+  font-weight:700;
+}
+.profile.hyundai-safety:not(.developer-profile) .field span{
+  color:#17212b!important;
+  font-weight:800;
+  text-shadow:none!important;
+}
+/* Preserve readable warning-history headings and keep all profile controls usable. */
+.profile.hyundai-safety:not(.developer-profile) + .warnings-title{
+  color:#17212b;
+}
+</style>
 </body></html>
