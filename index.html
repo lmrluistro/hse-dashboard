@@ -1521,7 +1521,7 @@ html{scroll-behavior:smooth;scroll-padding-top:20px;overflow-x:clip}body{min-wid
     </div>
   </div>
 </div>
-</section><div class="card top-issuer-card stop-top-issuer-card" id="topStopIssuerCard">
+<div class="card top-issuer-card stop-top-issuer-card" id="topStopIssuerCard">
   <div class="stop-top5-embedded"><div class="stop-top5-wrap"><div class="stop-half"><div class="stop-top5-head"><div class="stop-top5-title">🛑 TOP 5 STOP WORK — OCTOBER</div><div class="stop-top5-total">9 notices</div></div><div class="stop-bars"><div class="stop-row"><div class="stop-company">HD SMP1</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.05s"></div></div><div class="stop-count">2</div></div><div class="stop-row"><div class="stop-company">HD SMP2</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.12s"></div></div><div class="stop-count">2</div></div><div class="stop-row"><div class="stop-company">SHINBO</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.19s"></div></div><div class="stop-count">2</div></div><div class="stop-row"><div class="stop-company">HD BUILDING</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:50.00%;animation-delay:0.26s"></div></div><div class="stop-count">1</div></div><div class="stop-row"><div class="stop-company">HD HVAC</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:50.00%;animation-delay:0.33s"></div></div><div class="stop-count">1</div></div></div><div class="stop-tie-note">3-way tie at 2: HD SMP1, HD SMP2, SHINBO.</div></div><div class="stop-half"><div class="stop-top5-head"><div class="stop-top5-title">📊 TOP 5 STOP WORK — OVERALL</div><div class="stop-top5-total">574 notices</div></div><div class="stop-bars"><div class="stop-row"><div class="stop-company">NBTC</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:100.00%;animation-delay:0.05s"></div></div><div class="stop-count">93</div></div><div class="stop-row"><div class="stop-company">GUSAN</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:91.40%;animation-delay:0.12s"></div></div><div class="stop-count">85</div></div><div class="stop-row"><div class="stop-company">HD SMP2</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:91.40%;animation-delay:0.19s"></div></div><div class="stop-count">85</div></div><div class="stop-row"><div class="stop-company">HD SMP1</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:75.27%;animation-delay:0.26s"></div></div><div class="stop-count">70</div></div><div class="stop-row"><div class="stop-company">SHINBO</div><div class="stop-bar-bg"><div class="stop-bar" style="--bar-width:37.63%;animation-delay:0.33s"></div></div><div class="stop-count">35</div></div></div><div class="stop-tie-note"></div></div></div></div>
   <div class="stop-issuer-divider"></div>
 
@@ -1541,7 +1541,7 @@ html{scroll-behavior:smooth;scroll-padding-top:20px;overflow-x:clip}body{min-wid
       <div class="issuer-rank-tie" id="stopIssuerThirdTie"></div>
     </div>
   </div>
-</div>
+</div></section>
 <style id="stop-issuer-match-warning-issuer">
 /* Keep the Stop Work issuer card visually aligned with Top Warning Issuer. */
 .stop-top-issuer-card{border-top:4px solid #e87917 !important;}
@@ -2583,6 +2583,19 @@ function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;',
 /* Preserve readable warning-history headings and keep all profile controls usable. */
 .profile.hyundai-safety:not(.developer-profile) + .warnings-title{
   color:#17212b;
+}
+</style>
+
+<style id="desktop-issuer-cards-side-by-side-final">
+/* Desktop: Warning issuer on the left; combined Stop Work panels on the right.
+   Tablet/mobile: stack the cards to preserve readable widths. */
+@media (min-width:1101px){
+  #safetyOverview{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;align-items:stretch !important;}
+  #safetyOverview #topIssuerCard{grid-column:1 / span 2 !important;grid-row:2 !important;min-width:0 !important;}
+  #safetyOverview #topStopIssuerCard{grid-column:3 / span 2 !important;grid-row:2 !important;min-width:0 !important;}
+}
+@media (max-width:1100px){
+  #safetyOverview #topIssuerCard,#safetyOverview #topStopIssuerCard{grid-column:1 / -1 !important;grid-row:auto !important;}
 }
 </style>
 </body></html>
